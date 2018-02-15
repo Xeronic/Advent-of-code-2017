@@ -1,0 +1,64 @@
+var _user$project$Main$input = '62 1649 1731 76 51 1295 349 719 52 1984 2015 2171 981 1809 181 1715\n    161 99 1506 1658 84 78 533 242 1685 86 107 1548 670 960 1641 610\n    95 2420 2404 2293 542 2107 2198 121 109 209 2759 1373 1446 905 1837 111\n    552 186 751 527 696 164 114 530 558 307 252 200 481 142 205 479\n    581 1344 994 1413 120 112 656 1315 1249 193 1411 1280 110 103 74 1007\n    2536 5252 159 179 4701 1264 1400 2313 4237 161 142 4336 1061 3987 2268 4669\n    3270 1026 381 185 293 3520 1705 1610 3302 628 3420 524 3172 244 295 39\n    4142 1835 4137 3821 3730 2094 468 141 150 3982 147 4271 1741 2039 4410 179\n    1796 83 2039 1252 84 1641 2165 1218 1936 335 1807 2268 66 102 1977 2445\n    96 65 201 275 257 282 233 60 57 200 216 134 72 105 81 212\n    3218 5576 5616 5253 178 3317 6147 5973 2424 274 4878 234 200 4781 5372 276\n    4171 2436 134 3705 3831 3952 2603 115 660 125 610 152 4517 587 1554 619\n    2970 128 2877 1565 1001 167 254 2672 59 473 2086 181 1305 162 1663 2918\n    271 348 229 278 981 1785 2290 516 473 2037 737 2291 2521 1494 1121 244\n    2208 2236 1451 621 1937 1952 865 61 1934 49 1510 50 1767 59 194 1344\n    94 2312 2397 333 1192 106 2713 2351 2650 2663 703 157 89 510 1824 125';
+var _user$project$Main$min = function (list) {
+	var intList = A2(
+		_elm_lang$core$List$map,
+		function (x) {
+			return A2(
+				_elm_lang$core$Result$withDefault,
+				0,
+				_elm_lang$core$String$toInt(x));
+		},
+		_elm_lang$core$String$words(list));
+	return A2(
+		_elm_lang$core$Maybe$withDefault,
+		0,
+		_elm_lang$core$List$minimum(intList));
+};
+var _user$project$Main$max = function (list) {
+	var intList = A2(
+		_elm_lang$core$List$map,
+		function (x) {
+			return A2(
+				_elm_lang$core$Result$withDefault,
+				0,
+				_elm_lang$core$String$toInt(x));
+		},
+		_elm_lang$core$String$words(list));
+	return A2(
+		_elm_lang$core$Maybe$withDefault,
+		0,
+		_elm_lang$core$List$maximum(intList));
+};
+var _user$project$Main$diffLine = function (line) {
+	return _user$project$Main$max(line) - _user$project$Main$min(line);
+};
+var _user$project$Main$diff = function (input) {
+	var lines = _elm_lang$core$String$lines(input);
+	var diffLines = A2(_elm_lang$core$List$map, _user$project$Main$diffLine, lines);
+	return A3(
+		_elm_lang$core$List$foldr,
+		F2(
+			function (x, y) {
+				return x + y;
+			}),
+		0,
+		diffLines);
+};
+var _user$project$Main$main = _elm_lang$virtual_dom$Native_VirtualDom.staticProgram(
+	A2(
+		_elm_lang$html$Html$div,
+		{ctor: '[]'},
+		{
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$div,
+				{ctor: '[]'},
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html$text(
+						_elm_lang$core$Basics$toString(
+							_user$project$Main$diff(_user$project$Main$input))),
+					_1: {ctor: '[]'}
+				}),
+			_1: {ctor: '[]'}
+		}));
